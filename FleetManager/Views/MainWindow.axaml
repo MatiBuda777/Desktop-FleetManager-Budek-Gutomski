@@ -1,41 +1,41 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:FleetManager.ViewModels"
+        xmlns:views="clr-namespace:FleetManager.Views"
+        xmlns:viewModels="clr-namespace:FleetManager.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FleetManager.Views.MainWindow"
-        Title="Fleet Manager (Project ROVER)"
-        Width="900" Height="500"
-        Background="#F0F0F0">
+        x:DataType="viewModels:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Fleet Manager"
+        x:CompileBindings="False">
 
-    <Grid RowDefinitions="Auto, *, Auto">
-        
-        <Border Grid.Row="0" Background="#0056A3" Padding="15">
-            <TextBlock Text="Zarządzanie Flotą" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-        </Border>
+        <Design.DataContext>
+            <!-- This only sets the DataContext for the previewer in an IDE,
+                 to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+            <viewModels:MainWindowViewModel/>
+        </Design.DataContext>
 
-        <ScrollViewer Grid.Row="1" Padding="15">
-            <StackPanel Spacing="10">
-                
-                <Border Background="White" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="4">
-                    <Grid ColumnDefinitions="*, 80, 80">
-                        <TextBlock Grid.Column="0" Text="Ford Transit (WA 12345)" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                        <TextBlock Grid.Column="1" Text="Paliwo: 75%" Foreground="Green" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="2" Text="Available" Foreground="Blue" VerticalAlignment="Center"/>
-                    </Grid>
-                </Border>
+        <ScrollViewer Background="DimGray">
+            <StackPanel>
+            <Border Background="#0056A3" Padding="15">
+                <TextBlock Text="Zarządzanie Flotą" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
 
-                <Border Background="White" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="4">
-                    <Grid ColumnDefinitions="*, 80, 80">
-                        <TextBlock Grid.Column="0" Text="Mercedes (KR 98765)" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                        <TextBlock Grid.Column="1" Text="Paliwo: 12%" Foreground="Red" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="2" Text="InRoute" Foreground="Orange" VerticalAlignment="Center"/>
-                    </Grid>
-                </Border>
+            <ListBox ItemsSource="{Binding Vehicles}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <views:VehicleItemView/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-            </StackPanel>
+            <Border Background="#E0E0E0" Padding="10">
+                <TextBlock Text="Status: Gotowy" Foreground="Green"/>
+            </Border>
+                </StackPanel>
+
         </ScrollViewer>
-
-        <Border Grid.Row="2" Background="#E0E0E0" Padding="10">
-            <TextBlock Text="Status: Gotowy" Foreground="Green"/>
-        </Border>
-
-    </Grid>
 </Window>

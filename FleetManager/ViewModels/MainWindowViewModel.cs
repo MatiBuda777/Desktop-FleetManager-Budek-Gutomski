@@ -1,6 +1,9 @@
-﻿namespace FleetManager.ViewModels;
+﻿using System.Collections.Generic;
+using FleetManager.Models;
+
+namespace FleetManager.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    public List<Vehicle> Vehicles { get; set; } = [];
 }
