@@ -1,5 +1,62 @@
 [
   {
-    
+    "Name": "Ford Transit",
+    "RegistrationNumber": "NO12345",
+    "Fuel": 72.5,
+    "Status": "Available"
+  },
+  {
+    "Name": "Volkswagen Crafter",
+    "RegistrationNumber": "NOL45678",
+    "Fuel": 54.2,
+    "Status": "InRoute"
+  },
+  {
+    "Name": "Renault Master",
+    "RegistrationNumber": "NMR98765",
+    "Fuel": 33.1,
+    "Status": "Service"
+  },
+  {
+    "Name": "Mercedes Sprinter",
+    "RegistrationNumber": "OZL11223",
+    "Fuel": 88.0,
+    "Status": "Available"
+  },
+  {
+    "Name": "Opel Vivaro",
+    "RegistrationNumber": "NBR33445",
+    "Fuel": 41.7,
+    "Status": "InRoute"
+  },
+  {
+    "Name": "Fiat Ducato",
+    "RegistrationNumber": "NDZ55667",
+    "Fuel": 19.4,
+    "Status": "Service"
+  },
+  {
+    "Name": "Peugeot Boxer",
+    "RegistrationNumber": "NKE77889",
+    "Fuel": 63.9,
+    "Status": "Available"
+  },
+  {
+    "Name": "Citroen Jumper",
+    "RegistrationNumber": "NOG99001",
+    "Fuel": 27.3,
+    "Status": "Service"
+  },
+  {
+    "Name": "Iveco Daily",
+    "RegistrationNumber": "NLI22334",
+    "Fuel": 50.0,
+    "Status": "InRoute"
+  },
+  {
+    "Name": "Toyota ProAce",
+    "RegistrationNumber": "NOL44556",
+    "Fuel": 76.8,
+    "Status": "Available"
   }
 ]
