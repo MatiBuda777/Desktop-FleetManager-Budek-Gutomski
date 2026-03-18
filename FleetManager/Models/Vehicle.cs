@@ -1,8 +1,9 @@
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 namespace FleetManager.Models;
 
-public class Vehicle
+public class Vehicle : ReactiveObject
 {
     [Reactive] public string Name { get; set; } = string.Empty;
     [Reactive] public string RegistrationNumber { get; set; } = string.Empty;

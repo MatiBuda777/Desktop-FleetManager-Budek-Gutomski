@@ -19,23 +19,29 @@
         </Design.DataContext>
 
         <ScrollViewer Background="DimGray">
-            <StackPanel>
-            <Border Background="#0056A3" Padding="15">
-                <TextBlock Text="Zarządzanie Flotą" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Border>
+                <StackPanel>
+                <Border Background="#0056A3" Padding="15">
+                    <TextBlock Text="Nasza Flota" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                </Border>
 
-            <ListBox ItemsSource="{Binding Vehicles}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <views:VehicleItemView/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                <ListBox ItemsSource="{Binding Vehicles}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <!-- <views:VehicleItemView/> // to implement later -->
+                            <StackPanel Background="SandyBrown" Width="450" Margin="10" Spacing="10">
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="30"/>
+                                <TextBlock Text="{Binding RegistrationNumber}"/>
+                                <TextBlock Text="{Binding Fuel}"/>
+                                <TextBlock Text="{Binding Status}" FontStretch="SemiExpanded" FontStyle="Italic"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-            <Border Background="#E0E0E0" Padding="10">
-                <TextBlock Text="Status: Gotowy" Foreground="Green"/>
-            </Border>
-                </StackPanel>
+                <Border Background="#E0E0E0" Padding="10">
+                    <TextBlock Text="Status: Gotowy" Foreground="Green"/>
+                </Border>
+            </StackPanel>
 
         </ScrollViewer>
 </Window>

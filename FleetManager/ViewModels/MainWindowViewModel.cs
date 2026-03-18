@@ -1,9 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Reactive.Linq;
 using FleetManager.Models;
 
 namespace FleetManager.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public List<Vehicle> Vehicles { get; set; } = [];
+    public ObservableCollection<Vehicle> Vehicles { get; set; } = [];
+    private const string FilePath = "Assets/Vehicles.json";
+
+    public MainWindowViewModel()
+    {
+        loadVehicles();
+    }
+
+    private void loadVehicles()
+    {
+        if (!File.Exists(FilePath)) return;
+    }
 }
