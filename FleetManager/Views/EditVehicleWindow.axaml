@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:FleetManager.ViewModels"
+        xmlns:models="clr-namespace:FleetManager.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="FleetManager.Views.EditVehicleWindow"
+        x:DataType="vm:EditVehicleWindowViewModel"
+        Title="EditVehicleWindow">
+    
+        <StackPanel Margin="20">
+                <TextBlock Text="Dodaj nowe auto" FontWeight="Bold" FontSize="35"/>
+                
+                <TextBox Height="20" Width="150"
+                         Watermark="Imię i nazwisko"
+                         Text="{Binding NewName}"/>
+                
+                <TextBox Height="20" Width="150"
+                         Watermark="Rola (np. student)"
+                         Text="{Binding NewRegistrationNumber}"/>
+                
+                <Slider Minimum="0"
+                        Maximum="100"
+                        TickFrequency="10"
+                        IsSnapToTickEnabled="True" 
+                        Value="{Binding NewFuel}"/>
+                
+                <ComboBox SelectedItem="{Binding NewStatus}" ItemsSource="{Binding VehicleStatuses}"/>
+        </StackPanel>
+</Window>
