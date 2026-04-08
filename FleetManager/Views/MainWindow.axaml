@@ -5,6 +5,7 @@
         xmlns:vm="using:FleetManager.ViewModels"
         xmlns:views="clr-namespace:FleetManager.Views"
         xmlns:viewModels="clr-namespace:FleetManager.ViewModels"
+        xmlns:services="clr-namespace:FleetManager.Services"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FleetManager.Views.MainWindow"
         x:DataType="viewModels:MainWindowViewModel"
@@ -17,6 +18,10 @@
                  to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
             <viewModels:MainWindowViewModel/>
         </Design.DataContext>
+    
+        <!-- <Window.Resources> -->
+        <!--     <services:StatusToColorConverter x:Key="StatusToColorConverter"/> -->
+        <!-- </Window.Resources> -->
 
         <ScrollViewer Background="DimGray">
                 <StackPanel>
@@ -27,13 +32,7 @@
                 <ListBox ItemsSource="{Binding Vehicles}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <!-- <views:VehicleItemView/> // to implement later -->
-                            <StackPanel Background="SandyBrown" Width="450" Margin="10" Spacing="10">
-                                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="30"/>
-                                <TextBlock Text="{Binding RegistrationNumber}"/>
-                                <TextBlock Text="{Binding Fuel}"/>
-                                <TextBlock Text="{Binding Status}" FontStretch="SemiExpanded" FontStyle="Italic"/>
-                            </StackPanel>
+                            <views:VehicleItemView/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

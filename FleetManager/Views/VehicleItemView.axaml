@@ -8,10 +8,46 @@
              x:Class="FleetManager.Views.VehicleItemView"
              x:DataType="models:Vehicle">
     
-    <StackPanel Background="SandyBrown" Width="450" Margin="10" Spacing="10">
-        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="30"/>
-        <TextBlock Text="{Binding RegistrationNumber}"/>
-        <TextBlock Text="{Binding Fuel}"/>
-        <TextBlock Text="{Binding Status}" FontStretch="SemiExpanded" FontStyle="Italic"/>
-    </StackPanel>
+    <Border CornerRadius="12"
+            Background="#1E1E1E"
+            Padding="16"
+            Margin="10"
+            BorderBrush="#3A3A3A"
+            BorderThickness="1"
+            Width="450">
+        <StackPanel Spacing="6">
+            
+            <!-- Nazwa pojazdu -->
+            <TextBlock Text="{Binding Name}"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#F5F5F5"/>
+
+            <!-- Numer rejestracyjny -->
+            <TextBlock Text="{Binding RegistrationNumber}"
+                       FontSize="16"
+                       Foreground="#CFCFCF"/>
+
+            <!-- Poziom paliwa -->
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="Paliwo:"
+                           Foreground="#8A8A8A"/>
+                <TextBlock Text="{Binding Fuel}"
+                           Foreground="#E0E0E0"
+                           FontWeight="SemiBold"/>
+            </StackPanel>
+
+            <!-- Status pojazdu -->
+            <Border CornerRadius="6"
+                    Padding="4,2"
+                    HorizontalAlignment="Left"
+                    Background="{Binding Status}"> <!-- Converter={StaticResource StatusToColorConverter} -->
+                <TextBlock Text="{Binding Status}"
+                           Foreground="White"
+                           FontWeight="Bold"
+                           FontSize="14"/>
+            </Border>
+
+        </StackPanel>
+    </Border>
 </UserControl>
