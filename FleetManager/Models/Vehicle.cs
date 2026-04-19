@@ -1,9 +1,12 @@
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
+
 namespace FleetManager.Models;
 
-public class Vehicle
+public class Vehicle : ReactiveObject
 {
-    private string Name;
-    private string RegistrationNumber;
-    private float Fuel;
-    private VehicleStatus Status;
+    [Reactive] public string Name { get; set; } = string.Empty;
+    [Reactive] public string RegistrationNumber { get; set; } = string.Empty;
+    [Reactive] public float Fuel { get; set; } = 0;
+    [Reactive] public VehicleStatus Status { get; set; } = VehicleStatus.Service;
 }
