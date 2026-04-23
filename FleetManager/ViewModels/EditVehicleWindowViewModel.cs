@@ -19,10 +19,9 @@ public class EditVehicleWindowViewModel : ViewModelBase
     
     public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
-    public EditVehicleWindowViewModel(Vehicle? vehicle)
+    public EditVehicleWindowViewModel(Vehicle vehicle)
     {
         SaveCommand = ReactiveCommand.Create(SaveChanges);
-        if (vehicle == null) return;
         
         NewName = vehicle.Name;
         NewRegistrationNumber = vehicle.RegistrationNumber;
@@ -37,7 +36,5 @@ public class EditVehicleWindowViewModel : ViewModelBase
             Console.WriteLine("!----------------! Nazwa i rejestracja pojazdu nie może być pusta!!! !-----------------!");
             return;
         }
-        
-        
     }
 }

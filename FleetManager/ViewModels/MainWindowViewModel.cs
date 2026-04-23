@@ -5,8 +5,11 @@ using System.IO;
 using System.Reactive;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
 using FleetManager.Models;
 using FleetManager.Services;
+using FleetManager.Views;
 using ReactiveUI;
 
 namespace FleetManager.ViewModels;
@@ -23,14 +26,15 @@ public class MainWindowViewModel : ViewModelBase
     private readonly IVehicleService _vehicleService;
     
     public ObservableCollection<Vehicle> Vehicles { get; } = [];
+    public Vehicle SelectedVehicle { get; set; }
     
-    public ReactiveCommand<Unit, Unit> AddVehiclesCommand { get; } // to implement
+    public ReactiveCommand<Unit, Unit> EditVehiclesCommand { get; } // to implement
     public ReactiveCommand<Unit, Unit> SaveVehiclesCommand { get; }
 
     public MainWindowViewModel()
     {
         LoadVehicles();
-        //AddVehiclesCommand = ReactiveCommand.Create(EditVehicleWindowViewModel);
+        EditVehiclesCommand = ReactiveCommand.Create(EditVehicle);
         SaveVehiclesCommand = ReactiveCommand.Create(SaveVehiclesToJson);
     }
 
@@ -59,7 +63,22 @@ public class MainWindowViewModel : ViewModelBase
             Console.WriteLine(ex.Message);
         }
     }
-
+    
+    
+    public event Action<Vehicle> EditRequested;
+    private void EditVehicle()
+    {
+        try
+        {
+            EditRequested?.Invoke(SelectedVehicle);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    
+    
     private void SaveVehiclesToJson()
     {
         try

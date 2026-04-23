@@ -4,11 +4,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="using:FleetManager.ViewModels"
         xmlns:views="clr-namespace:FleetManager.Views"
-        xmlns:viewModels="clr-namespace:FleetManager.ViewModels"
         xmlns:services="clr-namespace:FleetManager.Services"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FleetManager.Views.MainWindow"
-        x:DataType="viewModels:MainWindowViewModel"
+        x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Fleet Manager"
         x:CompileBindings="False">
@@ -16,7 +15,7 @@
         <Design.DataContext>
             <!-- This only sets the DataContext for the previewer in an IDE,
                  to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-            <viewModels:MainWindowViewModel/>
+            <vm:MainWindowViewModel/>
         </Design.DataContext>
     
         <!-- <Window.Resources> -->
@@ -29,7 +28,7 @@
                     <TextBlock Text="Nasza Flota" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </Border>
 
-                <ListBox ItemsSource="{Binding Vehicles}">
+                <ListBox ItemsSource="{Binding Vehicles}" SelectedItem="{Binding }">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <views:VehicleItemView/>
@@ -37,9 +36,13 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <Border Background="#E0E0E0" Padding="10">
-                    <TextBlock Text="Status: Gotowy" Foreground="Green"/>
-                </Border>
+                <StackPanel Background="#E0E0E0" Margin="10">
+                    <Button Command="{Binding SaveVehiclesCommand}"
+                            Background="Red" Content="Save Vehicles" />
+                    
+                    <Button Command="{Binding EditVehiclesCommand}"
+                            Background="DodgerBlue" Content="Edit Vehicles" />
+                </StackPanel>
             </StackPanel>
 
         </ScrollViewer>

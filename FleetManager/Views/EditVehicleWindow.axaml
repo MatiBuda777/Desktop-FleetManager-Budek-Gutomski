@@ -13,11 +13,11 @@
                 <TextBlock Text="Dodaj nowe auto" FontWeight="Bold" FontSize="35"/>
                 
                 <TextBox Height="20" Width="150"
-                         Watermark="Imię i nazwisko"
+                         Watermark="Nazwa auta"
                          Text="{Binding NewName}"/>
                 
                 <TextBox Height="20" Width="150"
-                         Watermark="Rola (np. student)"
+                         Watermark="Numer Rejestracyjny"
                          Text="{Binding NewRegistrationNumber}"/>
                 
                 <Slider Minimum="0"
@@ -27,5 +27,7 @@
                         Value="{Binding NewFuel}"/>
                 
                 <ComboBox SelectedItem="{Binding NewStatus}" ItemsSource="{Binding VehicleStatuses}"/>
+                
+                <Button Command="{Binding SaveCommand}"/>
         </StackPanel>
 </Window>

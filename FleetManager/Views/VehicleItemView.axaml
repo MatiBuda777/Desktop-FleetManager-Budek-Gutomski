@@ -47,7 +47,6 @@
                            FontWeight="Bold"
                            FontSize="14"/>
             </Border>
-
         </StackPanel>
     </Border>
 </UserControl>
