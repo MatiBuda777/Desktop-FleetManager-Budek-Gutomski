@@ -24,4 +24,9 @@
         <PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
     </ItemGroup>
+    <ItemGroup>
+        <None Update="Assets\vehicles.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 </Project>

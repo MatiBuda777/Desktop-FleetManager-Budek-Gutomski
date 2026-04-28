@@ -10,9 +10,9 @@ public class MainWindowViewModel : ViewModelBase
 {
     private readonly IVehicleService _vehicleService;
     
+    // To jest kolekcja, której szuka interfejs (XAML)
     public ObservableCollection<VehicleItemViewModel> Vehicles { get; } = new();
 
-    // Konstruktor bezparametrowy dla Designera (Avalonia)
     public MainWindowViewModel() 
     {
         _vehicleService = new JsonVehicleService();
