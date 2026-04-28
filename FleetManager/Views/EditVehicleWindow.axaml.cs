@@ -7,9 +7,8 @@ namespace FleetManager.Views;
 
 public partial class EditVehicleWindow : Window
 {
-    public EditVehicleWindow(EditVehicleWindowViewModel vm)
+    public EditVehicleWindow()
     {
         InitializeComponent();
-        DataContext = vm;
     }
 }

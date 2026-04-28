@@ -36,5 +36,7 @@ public class EditVehicleWindowViewModel : ViewModelBase
             Console.WriteLine("!----------------! Nazwa i rejestracja pojazdu nie może być pusta!!! !-----------------!");
             return;
         }
+        
+        
     }
 }

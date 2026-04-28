@@ -23,16 +23,18 @@ public class MainWindowViewModel : ViewModelBase
         Converters = { new JsonStringEnumConverter() }
     };
     private const string FilePath = "Data/vehicles.json";
-    private readonly IVehicleService _vehicleService;
+    private readonly IWindowService _windowService;
     
     public ObservableCollection<Vehicle> Vehicles { get; } = [];
-    public Vehicle SelectedVehicle { get; set; }
+    public Vehicle? SelectedVehicle { get; set; }
     
     public ReactiveCommand<Unit, Unit> EditVehiclesCommand { get; } // to implement
     public ReactiveCommand<Unit, Unit> SaveVehiclesCommand { get; }
 
-    public MainWindowViewModel()
+    public MainWindowViewModel(IWindowService windowService)
     {
+        _windowService = windowService;
+        
         LoadVehicles();
         EditVehiclesCommand = ReactiveCommand.Create(EditVehicle);
         SaveVehiclesCommand = ReactiveCommand.Create(SaveVehiclesToJson);
@@ -65,12 +67,11 @@ public class MainWindowViewModel : ViewModelBase
     }
     
     
-    public event Action<Vehicle> EditRequested;
     private void EditVehicle()
     {
         try
         {
-            EditRequested?.Invoke(SelectedVehicle);
+            if (SelectedVehicle != null) _windowService.OpenEditWindow(SelectedVehicle);
         }
         catch (Exception ex)
         {
@@ -83,8 +84,7 @@ public class MainWindowViewModel : ViewModelBase
     {
         try
         {
-            var jsonData = JsonSerializer.Serialize(Vehicles);
-            File.WriteAllText(FilePath, jsonData);
+            File.WriteAllText(FilePath, JsonSerializer.Serialize(Vehicles, _options));
             Console.WriteLine("Vehicles saved to {0}", FilePath);
         }
         catch(Exception ex)
