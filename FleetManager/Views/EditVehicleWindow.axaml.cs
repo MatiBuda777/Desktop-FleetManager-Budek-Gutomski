@@ -10,5 +10,10 @@ public partial class EditVehicleWindow : Window
     public EditVehicleWindow()
     {
         InitializeComponent();
+        
+        if (DataContext is EditVehicleWindowViewModel vm)
+        {
+            vm.AttachWindow(this);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Avalonia.Controls;
 using FleetManager.Models;
 using FleetManager.ViewModels;
 using FleetManager.Views;
@@ -14,5 +15,10 @@ public class WindowService : IWindowService
         };
 
         window.Show();
+    }
+
+    public void Close(Window window)
+    {
+        window.Close();
     }
 }

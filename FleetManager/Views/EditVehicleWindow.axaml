@@ -24,7 +24,7 @@
                         Maximum="100"
                         TickFrequency="10"
                         IsSnapToTickEnabled="True" 
-                        Value="{Binding NewFuel, Mode=TwoWay}"/>
+                        Value="{Binding NewFuel}"/>
                 
                 <ComboBox SelectedItem="{Binding NewStatus}" ItemsSource="{Binding VehicleStatuses}"/>
                 
